@@ -1,3 +1,8 @@
+"""
+This is a simple *.pcap file parser made with PySimpleGUI.
+
+"""
+
 import PySimpleGUI as Sg
 import analyzer
 
@@ -41,5 +46,10 @@ if __name__ == '__main__':
 
         # Show info from file
         if event == 'Show info':
+            # Check if the protocol is empty
+            if protocol == '':
+                Sg.popup("Protocol field must be filled with proper value", title="Empty field!", line_width=300)
+                continue
             window["-info-"].update(analyzer.show_info(dirr, protocol))
+
     window.close()
